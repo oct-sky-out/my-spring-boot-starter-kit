@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: true
+  undertow:
+    url-charset: utf-8
+
+redis:
+  host: 133.186.211.156
+  port: 6379
+  password: "*N2vya7H@muDTwdNMR!"
+  database: 2
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+
+  session:
+    store-type: redis
+
+  profiles:
+    active: dev
+    include: oauth
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    pathmatch:
+          matching-strategy: ant_path_matcher
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    generate-ddl: true
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://dtquagoyy50ztoed:z5uue7m7ud2ptkmu@cwe1u6tjijexv3r6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/w8k2mju4slm5ba9w
+    username: dtquagoyy50ztoed
+    password: z5uue7m7ud2ptkmu
+
+# oauth
+#spring.security.oauth2.client.registration.kakao.client-id=94a231d94cd1bdfbbb21be5c4ec0735b
+#spring.security.oauth2.client.registration.kakao.client-authentication-method = POST
+#spring.security.oauth2.client.registration.kakao.redirect-uri = https://gaship.shop/login/oauth2/code/kakao
+#spring.security.oauth2.client.registration.kakao.authorization-grant-type = authorization_code
+#spring.security.oauth2.client.registration.kakao.scope=gender, account_email, birthday
+#spring.security.oauth2.client.registration.kakao.client-name = Kakao
+#spring.security.oauth2.client.provider.kakao.authorization-uri = https://kauth.kakao.com/oauth/authorize
+#spring.security.oauth2.client.provider.kakao.token-uri = https://kauth.kakao.com/oauth/token
+#spring.security.oauth2.client.provider.kakao.user-info-uri = https://kapi.kakao.com/v2/user/me
+#spring.security.oauth2.client.provider.kakao.user-name-attribute = id

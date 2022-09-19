@@ -1,0 +1,51 @@
+spring:
+  thymeleaf:
+    cache: false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+            kakao:
+              client-id : 0d39176975e47ee50c081d105d01d3c5
+              client-authentication-method: POST
+              redirect-uri : http://localhost:8080/login/oauth2/code/kakao
+              authorization-grant-type : authorization_code
+              scope: gender, account_email, birthday
+              client-name: Kakao
+        provider:
+          kakao :
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+logging:
+  level:
+    org:
+      springframework:
+        web : debug
+      hibernate: debug
+    com:
+      nhnacademy:
+        projectbulk : debug
+    root: debug
+  charset:
+    console: UTF-8
+    file: UTF-8
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %logger{36} - %msg%n"
+  file:
+    name: ./log/log.log
+    path: ./log
+  logback:
+    rollingpolicy:
+      file-name-pattern: ./log/my-log-%d{yyyy-MM-dd}.%i.log
+      max-history: 30
+      max-file-size: 3MB
+
